@@ -1,0 +1,10 @@
+<h1>Hello <%=@user.name%>,</h1>
+
+<p>
+  the following items were removed from your cart due to inactivity.
+</p>
+<ul>
+  <%@items.each do |item|%>
+    <li><%=link_to item.product.name, user_product_url(@user, item.product)%>: <%=item.quantity%> items</li>
+  <%end%>
+</ul>

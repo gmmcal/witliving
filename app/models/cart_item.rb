@@ -9,6 +9,8 @@ class CartItem < ApplicationRecord
   validates :price, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
 
+  scope :expired, -> { where('updated_at < ?', Time.now - 2.days)}
+
   def total
     product.price * quantity.to_f
   end
