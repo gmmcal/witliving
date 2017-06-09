@@ -1,0 +1,10 @@
+<%=link_to 'Go to cart', cart_user_path(@user), class: 'btn btn-primary pull-right' %>
+<h1>Products</h1>
+<ul class="list-group">
+  <%@products.each do |product|%>
+    <li class="list-group-item">
+      <%=link_to product.name, user_product_path(@user, product)%>
+      <%=link_to 'Add to cart', add_user_product_path(@user, product), class: 'pull-right btn btn-primary btn-xs', method: :post %>
+    </li>
+  <%end%>
+</ul>

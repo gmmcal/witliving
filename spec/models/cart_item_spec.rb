@@ -53,17 +53,31 @@ RSpec.describe CartItem, type: :model do
     end
   end
 
-  describe '#pending' do
+  describe '#pending_quantity' do
     let(:user) { create(:user) }
     let(:product) { create(:product) }
 
     it 'should be equal to zero if cart is empty' do
-      expect(CartItem.pending).to be_zero
+      expect(CartItem.pending_quantity).to be_zero
     end
 
     it 'should not be zero if cart is not empty' do
       cart_item = create_list(:cart_item, 5, user: user)
-      expect(CartItem.pending).to_not be_zero
+      expect(CartItem.pending_quantity).to_not be_zero
+    end
+  end
+
+  describe '#pending_amount' do
+    let(:user) { create(:user) }
+    let(:product) { create(:product) }
+
+    it 'should be equal to zero if cart is empty' do
+      expect(CartItem.pending_amount).to be_zero
+    end
+
+    it 'should not be zero if cart is not empty' do
+      cart_item = create_list(:cart_item, 5, user: user)
+      expect(CartItem.pending_amount).to_not be_zero
     end
   end
 end

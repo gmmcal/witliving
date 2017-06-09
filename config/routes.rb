@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
-  resources :users do
-    resources :products
+  root to: 'users#index'
+  resources :users, only: [:index] do
+    resources :products, only: [:index, :show] do
+      member do
+        post :add, to: 'products#add'
+        delete :remove, to: 'products#delete'
+      end
+    end
+    member do
+      get :cart, to: 'cart#index'
+    end
   end
 
   if Rails.env.development?

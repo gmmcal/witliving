@@ -1,0 +1,27 @@
+<h1>Cart from <%=@user.name%></h1>
+<table class="table table-stripedd">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price per unit</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@cart_items.each do |cart_item|%>
+      <tr>
+        <td><%=cart_item.product.name%></td>
+        <td><%=link_to '-1', remove_user_product_path(@user, cart_item.product), class: 'btn btn-info btn-sm', method: :delete %> <%=cart_item.quantity%> <%=link_to '+1', add_user_product_path(@user, cart_item.product), class: 'btn btn-info btn-sm', method: :post %></td>
+        <td><%=number_to_currency cart_item.price%></td>
+        <td><%=number_to_currency cart_item.total%></td>
+      </tr>
+    <%end%>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">Total</td>
+      <td><%=number_to_currency CartItem.total(@user)%></td>
+    </tr>
+  </tfoot>
+</table>

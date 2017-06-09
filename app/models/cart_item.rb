@@ -23,7 +23,11 @@ class CartItem < ApplicationRecord
     user.cart_items.inject(0) { |sum, ci| sum + ci.quantity }
   end
 
-  def self.pending()
+  def self.pending_quantity
+    User.all.map{ |u| CartItem.quantity(u) }.sum
+  end
+
+  def self.pending_amount
     User.all.map{ |u| CartItem.total(u) }.sum
   end
 end

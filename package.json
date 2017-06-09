@@ -1,5 +1,7 @@
 {
   "name": "witliving-test",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
 }
