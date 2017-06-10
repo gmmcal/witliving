@@ -11,4 +11,11 @@ class NotifyMailer < ApplicationMailer
 
     mail to: "to@example.org"
   end
+
+  def price_updated(items, user)
+    @items = items
+    @user = user
+
+    mail to: "to@example.org"
+  end
 end

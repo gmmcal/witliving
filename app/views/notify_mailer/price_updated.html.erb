@@ -1,0 +1,10 @@
+<h1>Hello <%=@user.name%>,</h1>
+
+<p>
+  the following item price was updated on your cart.
+</p>
+<ul>
+  <%@items.each do |item|%>
+    <li><%=link_to item.product.name, user_product_url(@user, item.product)%>: <%=number_to_currency(item.price)%></li>
+  <%end%>
+</ul>
